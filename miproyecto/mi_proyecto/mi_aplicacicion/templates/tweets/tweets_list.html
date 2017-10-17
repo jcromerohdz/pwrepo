@@ -1,0 +1,10 @@
+
+{% for object in object_list %}
+
+<p>{{object.user}}</p>
+<p>{{object.created|timesince}}</p>
+<p>{{object}}</p>
+<a href="/tweet/detail/{{object.id}}/">Detalle tweet</a>
+
+
+{% endfor %}
