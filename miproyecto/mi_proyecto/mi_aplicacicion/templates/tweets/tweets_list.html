@@ -1,10 +1,52 @@
+{% extends "tweets/base.html" %}
+
+{%block search%}
+  {% include "tweets/search_form.html" %}<br/>
+{%endblock%}
+{%block content%}
+{% if not request.GET.q %}
+<div class="">
+  {%include "tweets/form.html" with form=create_form action_url=create_url btn_title='Tweet'%}
+  <!-- <p class="image is-32x32">
+    <img src="http://bulma.io/images/placeholders/128x128.png">
+  </p> -->
+</div>
+{% endif %}
 
 {% for object in object_list %}
+<article class="post">
 
-<p>{{object.user}}</p>
-<p>{{object.created|timesince}}</p>
-<p>{{object}}</p>
-<a href="/tweet/detail/{{object.id}}/">Detalle tweet</a>
+<h4>{{object}}</h4>
+<span class="pull-right has-text-grey-light"><i class="fa fa-comments"></i> 1</span>
+<div class="media">
 
+  <div class="media-left">
 
+    <!-- <p class="image is-32x32">
+      <img src="http://bulma.io/images/placeholders/128x128.png">
+    </p> -->
+  </div>
+
+  <div class="media-content">
+    <div class="content">
+      <p>
+
+        <a href="/tweet/detail/{{object.id}}/">View</a> {{object.created|timesince}} {{object.user}}&nbsp;
+
+        <!-- <span class="tag">Question</span> -->
+      </p>
+
+    </div>
+  </div>
+
+</div>
+
+</article>
+{%empty%}
+{% if request.GET.q %}
+  <p>No tweets found.</p>
+{% else %}
+  <p>No tweets yet.</p>
+{% endif %}
 {% endfor %}
+{% endblock %}

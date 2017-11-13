@@ -19,12 +19,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from mi_aplicacicion.views import home, TweetCreateView
-from mi_aplicacicion.views import TweetDetailView, TweetListView
+from mi_aplicacicion.views import TweetDetailView, TweetListView, TweetUpdateView, TweetDeleteView
+# from mi_aplicacicion.views import TweetDetailView, TweetListView, TweetUpdateView
 # from mi_aplicacicion.views import TweetDetailView
 
 urlpatterns = [
     url(r'^home/$', home, name='home'),
     url(r'^tweet/create$', TweetCreateView.as_view(), name='TweetCreate'),
+    url(r'^tweet/detail/(?P<pk>\d)/edit/$', TweetUpdateView.as_view(), name='TweetUpdate'),
+    url(r'^tweet/detail/(?P<pk>\d)/delete/$', TweetDeleteView.as_view(), name='TweetDelete'),
     url(r'^tweet/detail/(?P<id>\d)/$', TweetDetailView.as_view(), name='TweetDetail'),
     url(r'^tweet/list$', TweetListView.as_view(), name='TweetList'),
 
