@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form {%if form_id%} id='{{form_id}}' {%endif%} class="form"  method="POST" action="{% if action_url %}{{ action_url }}{% endif %}" >
+
+      {% csrf_token %}
+      <!-- <label for="id_content">Content:</label></br> -->
+
+      <div class="control">
+        <!-- Que es un widget y como lo uso? Tarea -->
+          <!-- <textarea class="textarea"  name="content" required="" id="id_content" maxlength="140" placeholder="Tweet Please"></textarea> -->
+          {{form.as_p}}
+          <input class="button is-primary is-block is-alt is-large" type="submit" name="" value="Register">
+      </div>
+
+
+      <!-- {{form.as_p}} -->
+
+
+
+</form>
+
+{% endblock %}
