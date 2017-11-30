@@ -1,7 +1,7 @@
 from django import forms
 
 class UserRegisterForm(forms.Form):
-    usrname = forms.CharField(label='',
+    username = forms.CharField(label='',
                               widget=forms.TextInput(
                                     attrs={'placeholder':"Username*",
                                     'class': "input"}))

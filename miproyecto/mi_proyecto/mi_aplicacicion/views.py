@@ -26,7 +26,7 @@ class TweetCreateView(LoginRequiredMixin,FormUserNeededMixin, CreateView):
     form_class = TweetModelForm
     template_name = "tweets/create_view.html"
     success_url = "/tweet/list"
-    login_url = "/admin"
+    login_url = "/login"
 
 class TweetUpdateView(UpdateView):
     queryset = Tweet.objects.all()
@@ -51,7 +51,7 @@ class TweetDetailView(DetailView):
 
 
 class TweetListView(ListView):
-    template_name = "tweets/tweets_list_ajax.html"
+    template_name = "tweets/tweet_list_ajax.html"
     # queryset = Tweet.objects.all()
 
     def get_queryset(self, *args, **kwargs):
